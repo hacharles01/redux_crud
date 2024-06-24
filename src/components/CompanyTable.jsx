@@ -27,6 +27,7 @@ function CompanyTable() {
     const [address, setAddress] = useState('');
     const [type, setType] = useState('');
     const [popuptitle, setPopUpTitle] = useState('');
+    const [nextId, setNextId] = useState(1); // Initialize the next ID to 1
 
     useEffect(() => {
         dispatch(fetchData());
@@ -34,8 +35,10 @@ function CompanyTable() {
 
     useEffect(() => {
         if (data && data.length > 0) {
-            // Set initial ID based on the length of data array
-            setId(data[data.length - 1].id + 1);
+            // Find the maximum ID in the data array
+            const maxId = Math.max(...data.map(item => parseInt(item.id)));
+            // Set the next ID to be used for new entries
+            setNextId(maxId + 1);
         }
     }, [data]);
 
@@ -81,6 +84,8 @@ function CompanyTable() {
         } else {
             setPopUpTitle('');
             clearForm();
+            // If it's an edit action, modify the title accordingly
+            setPopUpTitle('Update Data Please');
         }
         setOpen(true);
     };
@@ -92,12 +97,7 @@ function CompanyTable() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Get the last ID from the data array
-        const lastId = data.length > 0 ? data[data.length - 1].id : 0;
-        // Increment the last ID by 1 to generate a new ID
-        const newId = parseInt(lastId) + 1;
-        // Create the new data object with the new ID
-        const newData = { id: newId, name, email, phone, address, type };
+        const newData = { id: nextId, name, email, phone, address, type };
         if (popuptitle) {
             newData.id = popuptitle.id;
             dispatch(updateData(newData))
@@ -105,24 +105,24 @@ function CompanyTable() {
                     toast.success("Data Updated Successfully!!");
                     setOpen(false);
                 })
-                .catch(() => {
-                    toast.error("Failed To Update Data");
+                .catch((error) => {
+                    console.error("Error updating data:", error);
+                    toast.error("Failed To Update Data: " + error.message);
                 })
         } else {
             dispatch(addData(newData))
                 .then(() => {
                     toast.success("Data Added Successfully!!!");
                     setOpen(false);
-                    // Update the id state for the next entry
-                    setId(newId + 1);
+                    setNextId(prevId => prevId + 1);
                 })
-                .catch(() => {
-                    toast.error("Failed To Add Data");
+                .catch((error) => {
+                    console.error("Error adding data:", error);
+                    toast.error("Failed To Add Data: " + error.message);
                 });
         }
     };
     
-
     const handleDelete = (id) => {
         const isConfirmed = window.confirm("Are you sure you want to delete this data?")
         if (isConfirmed) {
@@ -130,11 +130,13 @@ function CompanyTable() {
                 .then(() => {
                     toast.success("Data Deleted Successfully!!!");
                 })
-                .catch(() => {
-                    toast.error("Failed To Delete Data");
+                .catch((error) => {
+                    console.error("Error deleting data:", error);
+                    toast.error("Failed To Delete Data: " + error.message);
                 })
         }
     };
+    
 
     return (
         <div>
