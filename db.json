@@ -1,0 +1,92 @@
+{
+  "companies": [
+    {
+      "name": "HAKIZIMANA Charles",
+      "email": "chakizimana@mifotra.gov.rw",
+      "phone": "0788952977",
+      "address": "Rwanda",
+      "type": "Government",
+      "id": "1"
+    },
+    {
+      "name": "HAKIZIMANA Charles",
+      "email": "chakizimana@mifotra.gov.rw",
+      "phone": "0788952977",
+      "address": "Rwanda",
+      "type": "Government",
+      "id": "2"
+    },
+    {
+      "name": "HAKIZIMANA Charles",
+      "email": "chakizimana@mifotra.gov.rw",
+      "phone": "0788952977",
+      "address": "Rwanda",
+      "type": "Private",
+      "id": "3"
+    },
+    {
+      "name": "HAKIZIMANA Charles",
+      "email": "hacharles01@gmail.com",
+      "phone": "0788952977",
+      "address": "Rwanda",
+      "type": "Private",
+      "id": "4"
+    },
+    {
+      "name": "HABIMANA Charles",
+      "email": "hacharles01@gmail.com",
+      "phone": "0788952977",
+      "address": "Rwanda",
+      "type": "DOMESTIC",
+      "id": "5"
+    },
+    {
+      "id": "6",
+      "name": "HAKIZIMANA Charles",
+      "email": "hacharles01@gmail.com",
+      "phone": "0788952977",
+      "address": "Rwanda",
+      "type": "DOMESTIC"
+    },
+    {
+      "id": "7",
+      "name": "HAVUGIMANA John",
+      "email": "hacharles01@gmail.com",
+      "phone": "0788952977",
+      "address": "Rwanda",
+      "type": "DOMESTIC"
+    },
+    {
+      "name": "HAKIZIMANA Charles",
+      "email": "hacharles01@gmail.com",
+      "phone": "0788952977",
+      "address": "",
+      "type": "Public",
+      "id": "8"
+    },
+    {
+      "id": "0d4b",
+      "name": "HAKIZIMANA Charles",
+      "email": "hacharles01@gmail.com",
+      "phone": "0788952977",
+      "address": "Rwanda",
+      "type": "Public"
+    },
+    {
+      "id": "0db3",
+      "name": "HAKIZIMANA Charles",
+      "email": "chakizimana@mifotra.gov.rw",
+      "phone": "0788952977",
+      "address": "Rwanda",
+      "type": "Private"
+    },
+    {
+      "id": "aa17",
+      "name": "HAKIZIMANA Charles",
+      "email": "hacharles01@gmail.com",
+      "phone": "0788952977",
+      "address": "Rwanda",
+      "type": "Government"
+    }
+  ]
+}
