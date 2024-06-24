@@ -32,9 +32,11 @@ function CompanyTable() {
         dispatch(fetchData());
     }, [dispatch]);
 
-    // Log data to console
     useEffect(() => {
-        console.log('Data:', data);
+        if (data && data.length > 0) {
+            // Set initial ID based on the length of data array
+            setId(data[data.length - 1].id + 1);
+        }
     }, [data]);
 
     // Handle loading and error states
@@ -59,20 +61,17 @@ function CompanyTable() {
         setAddress('');
         setType('Public');
     };
-    
+
     const handleClose = () => {
         setOpen(false);
-        // Clear form fields when dialog is closed for adding new data
         if (!popuptitle) {
             clearForm();
         }
     };
-    
+
     const handleOpen = (company) => {
         if (company) {
-            // Set dialog title to 'Update Data Please'
             setPopUpTitle(company);
-            // Set form fields with data of selected company
             setId(company.id);
             setName(company.name);
             setEmail(company.email);
@@ -80,24 +79,25 @@ function CompanyTable() {
             setAddress(company.address);
             setType(company.type);
         } else {
-            // Clear dialog title and form fields for adding new data
             setPopUpTitle('');
             clearForm();
         }
         setOpen(true);
     };
-    
 
-    const handleAdd=()=>{
- setOpen(true);
- clearForm();
-    }
+    const handleAdd = () => {
+        setOpen(true);
+        clearForm();
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // Extract data from form fields
-        const newData = { name, email, phone, address, type };
+        // Get the last ID from the data array
+        const lastId = data.length > 0 ? data[data.length - 1].id : 0;
+        // Increment the last ID by 1 to generate a new ID
+        const newId = parseInt(lastId) + 1;
+        // Create the new data object with the new ID
+        const newData = { id: newId, name, email, phone, address, type };
         if (popuptitle) {
             newData.id = popuptitle.id;
             dispatch(updateData(newData))
@@ -105,31 +105,32 @@ function CompanyTable() {
                     toast.success("Data Updated Successfully!!");
                     setOpen(false);
                 })
-                .catch((error) => {
+                .catch(() => {
                     toast.error("Failed To Update Data");
                 })
         } else {
-            // Dispatch action to add new data
             dispatch(addData(newData))
                 .then(() => {
                     toast.success("Data Added Successfully!!!");
-                    setOpen(false); // Close the dialog
+                    setOpen(false);
+                    // Update the id state for the next entry
+                    setId(newId + 1);
                 })
-                .catch((error) => {
+                .catch(() => {
                     toast.error("Failed To Add Data");
                 });
-        };
-
-    }
+        }
+    };
+    
 
     const handleDelete = (id) => {
         const isConfirmed = window.confirm("Are you sure you want to delete this data?")
         if (isConfirmed) {
             dispatch(deleteData(id))
                 .then(() => {
-                    toast.success("Data Deleted Successfully!!!"); // Corrected typo
+                    toast.success("Data Deleted Successfully!!!");
                 })
-                .catch((error) => {
+                .catch(() => {
                     toast.error("Failed To Delete Data");
                 })
         }
@@ -161,8 +162,8 @@ function CompanyTable() {
                                     <TableCell>{company.address}</TableCell>
                                     <TableCell>{company.type}</TableCell>
                                     <TableCell>
-                                        <Button variant="contained" color="info" onClick={() => handleOpen(company)} >Read</Button>
-                                        <Button variant="contained" color="primary"  onClick={() => handleOpen(company)} style={{ margin: '0 5px' }}>Edit</Button>
+                                        <Button variant="contained" color="primary" onClick={() => handleOpen(company)} >Read</Button>
+                                        <Button variant="contained" color="primary" onClick={() => handleOpen(company)} style={{ margin: '0 5px' }}>Edit</Button>
                                         <Button variant="contained" color="error" onClick={() => handleDelete(company.id)}>Delete</Button>
                                     </TableCell>
                                 </TableRow>

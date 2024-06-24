@@ -2,10 +2,10 @@
   "companies": [
     {
       "name": "HAKIZIMANA Charles",
-      "email": "chakizimana@mifotra.gov.rw",
+      "email": "hacharles01@gmail.com",
       "phone": "0788952977",
-      "address": "Rwanda",
-      "type": "Government",
+      "address": "Rulindo",
+      "type": "Public",
       "id": "1"
     },
     {
@@ -57,36 +57,36 @@
       "type": "DOMESTIC"
     },
     {
-      "name": "HAKIZIMANA Charles",
-      "email": "hacharles01@gmail.com",
-      "phone": "0788952977",
-      "address": "",
-      "type": "Public",
-      "id": "8"
-    },
-    {
-      "id": "0d4b",
-      "name": "HAKIZIMANA Charles",
-      "email": "hacharles01@gmail.com",
-      "phone": "0788952977",
-      "address": "Rwanda",
+      "id": 8,
+      "name": "",
+      "email": "",
+      "phone": "",
+      "address": "Rulindo",
       "type": "Public"
     },
     {
-      "id": "0db3",
-      "name": "HAKIZIMANA Charles",
-      "email": "chakizimana@mifotra.gov.rw",
-      "phone": "0788952977",
-      "address": "Rwanda",
-      "type": "Private"
+      "id": 9,
+      "name": "",
+      "email": "",
+      "phone": "",
+      "address": "gasabo",
+      "type": "Public"
     },
     {
-      "id": "aa17",
+      "id": 10,
       "name": "HAKIZIMANA Charles",
       "email": "hacharles01@gmail.com",
       "phone": "0788952977",
       "address": "Rwanda",
       "type": "Government"
+    },
+    {
+      "id": 11,
+      "name": "HAKIZIMANA Charles",
+      "email": "chakizimana@mifotra.gov.rw",
+      "phone": "0788952977",
+      "address": "Rwanda",
+      "type": "Private"
     }
   ]
 }
